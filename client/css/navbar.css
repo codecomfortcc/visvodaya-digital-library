@@ -1,0 +1,152 @@
+header {
+  position: sticky;
+  top: 0;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: var(--navbar-height);
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  color: var(--foreground);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--foreground);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+.stroke{
+  color: var(--foreground);
+
+}
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-btn,
+.menu-btn {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.theme-btn:hover,
+.menu-btn:hover {
+  opacity: 0.8;
+}
+
+.menu-btn {
+  display: none;
+}
+.theme-toggle {
+  background-color: var(--background);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 2px 2px var(--accent-foreground);
+  line-height: 1;
+}
+
+.theme-input {
+  display: none;
+}
+
+.theme-icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transition: transform 500ms;
+}
+
+.theme-icon--moon {
+  transition-delay: 200ms;
+}
+
+.theme-icon--sun {
+  transform: scale(0);
+}
+
+#themeBtn:checked + .theme-icon--moon {
+  transform: rotate(360deg) scale(0);
+}
+
+#themeBtn:checked ~ .theme-icon--sun {
+  transition-delay: 200ms;
+  transform: scale(1) rotate(360deg);
+}
+@media (max-width: 768px) {
+  .menu-btn {
+      display: flex;
+  }
+
+  .nav-links {
+      position: absolute;
+      top: var(--navbar-height);
+      left: 0;
+      right: 0;
+      background-color: var(--background);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links.show {
+      display: flex;
+  }
+
+  .nav-links a {
+      padding: 0.5rem;
+  }
+
+  .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+  }
+}
